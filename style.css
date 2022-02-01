@@ -1,0 +1,48 @@
+
+.hamburger {
+    position: fixed;
+    z-index: 100;
+    padding: 4px;
+    background: white;
+    cursor: pointer;
+  }
+header {
+    display: none
+}
+.menu {
+  position: fixed;
+  transform: translateY(-100%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  color: white;
+  margin-top: 100px;
+}
+.showMenu {
+    transform: translateY(0);
+  }
+  .menuItem {
+    font-size: 20px;
+}
+
+@media screen and (min-width:1024px) {
+    .hamburger {
+        display: none;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu ,.burger {
+        display: none;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+
+}
