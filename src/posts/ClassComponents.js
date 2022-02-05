@@ -1,7 +1,7 @@
 
-import { useState } from 'react';
-import { useEffect } from 'react';
 import Post from './Post';
+import { ThemeContext } from './../theme';
+import { useContext, useEffect, useState } from "react"
 
 
 export default function ClassComponentik (){
@@ -16,11 +16,20 @@ export default function ClassComponentik (){
     useEffect (() => {
         fetchPosts()
     },[])
+    const { theme } = useContext(ThemeContext)
+    const styles = {
+        light: {
+            color: 'white',
+        },
+        dark: {
+            color: 'black',
+        }
+    }
     return (
 <div>
     {before.map((post) => {
         return (
-            <Post id = {post.id} title = {post.title} body = {post.body}/>
+            <Post styles={styles[theme]} id = {post.id} title = {post.title} body = {post.body}/>
         )
     })}
 </div>)}
