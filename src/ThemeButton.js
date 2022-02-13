@@ -8,12 +8,20 @@ export default function ThemeButton({ children }) {
 
     const styles = {
         light: {
-            background: '#879cfd',
+            background: 'white',
             color: 'black',
+            border : 'none',
+            width : '50px',
+            borderRadius : '2px',
+            cursor : 'pointer'
         },
         dark: {
             background: 'black',
+            width : '50px',
             color: 'white',
+            border : 'none',
+            borderRadius : '2px',
+            cursor : 'pointer'
         }
     }
 

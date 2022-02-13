@@ -1,31 +1,66 @@
+import { useContext, useState } from 'react';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
-import './App.css';
-// import { Store } from './context/store';
-// import ClassComponentik from './posts/ClassComponents';
-// import Test from './test/Test';
+import Header from './Header';
+
+import AboutDetailsPage from './pages/AboutDetailsPage';
+import AboutPage from './pages/AboutPage';
+import CatGame from './pages/CatGame';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
+import Status from './pages/Status';
 import { ThemeContext } from './theme';
-import { useState } from 'react';
-import Header from './header';
 
-
-
-function App() {
-  const [theme, setTheme] = useState('light')
-  const onChangeTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+function MainLayout() {
+  const { theme } = useContext(ThemeContext)
   return (
-<ThemeContext.Provider value={{theme, setTheme: onChangeTheme}}>                
-<div className={theme}>
-  
-  <Header/>
-  {/* <ClassComponentik/> */}
-  </div>                 
-
-</ThemeContext.Provider>                       
-
+      <div className={theme}>
+        <Header />
+        <Outlet />
+      </div>
   )
 }
 
+function App() {
+  const [theme, setTheme] = useState('dark')
+
+
+  const onChangeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme: onChangeTheme }}>
+      
+        <div className={theme}>
+          <Header />
+          <Routes>
+            <Route path="game"
+            element={<CatGame/>} 
+            />
+            <Route path='status'
+            element = {<Status/>}
+            />
+              <Route
+                index
+                element={<HomePage />}
+              />
+              <Route
+                path="about"
+                element={<AboutPage />} 
+              />
+              <Route path="about/:aboutId" element={<AboutDetailsPage />}>
+                <Route index element={<div>Bla bla</div>} />
+                <Route path="details" element={<div>About custom</div>} />
+              </Route>
+              <Route
+                path="*" 
+                element={<NotFoundPage />} 
+              />
+          </Routes>
+          </div>
+    </ThemeContext.Provider>
+  );
+}
 
 export default App;
