@@ -12,9 +12,9 @@ const STATUSES = {
 
 
 const STATUS_MESSAGES = {
-    [STATUSES.INFO]:    <Alert  variant="filled" severity="info">Пришла информация</Alert>,
+    [STATUSES.INFO]:    <Alert variant="filled" severity="info">   Пришла информация</Alert>,
     [STATUSES.SUCCESS]: <Alert variant="filled" severity="success">Молодец!</Alert> ,
-    [STATUSES.ERROR]:   <Alert variant="filled" severity="error">ОШИБКА!</Alert>,
+    [STATUSES.ERROR]:   <Alert variant="filled" severity="error">  ОШИБКА!</Alert>,
     [STATUSES.WARNING]: <Alert variant="filled" severity="warning">ВНИМАНИЕ!!</Alert>,
 }
 
@@ -35,18 +35,25 @@ export default function Status(){
             color: 'black',
         }
     }
+    const styles1 = {
+        width : '100%',
+        height : '100vh'
+    }
     return (
-        <div>
-        <select value={status} onChange = {onSelectStatus}>
-            <option value={STATUSES.SUCCESS}>{STATUSES.SUCCESS}</option>
-            <option value={STATUSES.INFO}>{STATUSES.INFO}</option>
-            <option value={STATUSES.ERROR}>{STATUSES.ERROR}</option>
-            <option value={STATUSES.WARNING}>{STATUSES.WARNING}</option>
-        </select>
-          <div className={`header c-${theme}`}>{STATUS_MESSAGES[status]}</div>
+    <div style={styles1}>
+        <div className= 'allertBox'>
+            <select value={status} onChange = {onSelectStatus}>
+                <option value={STATUSES.SUCCESS}>{STATUSES.SUCCESS}</option>
+                <option value={STATUSES.INFO}>{STATUSES.INFO}</option>
+                <option value={STATUSES.ERROR}>{STATUSES.ERROR}</option>
+                <option value={STATUSES.WARNING}>{STATUSES.WARNING}</option>
+            </select>
+            {STATUS_MESSAGES[status]}
+          
         
             <Outlet />
         </div>
+    </div>
     )
     
 }

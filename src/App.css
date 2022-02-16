@@ -9,10 +9,14 @@
     justify-content: center;
     gap: 20px;
   }
+.allertBox {
+  display: flex;
+  justify-content: center;
+}
   
   :root {
-    --bg-dark: #212121;
-    --bg-light: #ffffff;
+    --bg-dark: #31343b;
+    --bg-light: #b0daff;
   }
   
   .light {
@@ -25,13 +29,21 @@
   }
   
   .c-light {
-    color: var(--bg-light);
+    color: #e2bef9;
   }
   
   .c-dark {
-    color: var(--bg-dark);
+    color: #335e5d;
   }
   
   .custom-arrow {
     background: aquamarine;
   }
+  .post {
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}

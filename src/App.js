@@ -10,6 +10,10 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import Status from './pages/Status';
 import { ThemeContext } from './theme';
+import MaterialPage from './pages/MaterialPage';
+import MaterialDetailsPage from './pages/MaterialDetailsPage';
+import AlbumPage from './pages/AlbumPage';
+import AlbumDetailsPage from './pages/AlbumDetailsPage';
 
 function MainLayout() {
   const { theme } = useContext(ThemeContext)
@@ -35,6 +39,10 @@ function App() {
         <div className={theme}>
           <Header />
           <Routes>
+          <Route path="album/:albumId" element={<AlbumDetailsPage/>} />
+          <Route path="material" element={<MaterialPage />} />
+          <Route path="album" element={<AlbumPage />} />
+          <Route path="material/:postId" element={<MaterialDetailsPage />} />
             <Route path="game"
             element={<CatGame/>} 
             />
