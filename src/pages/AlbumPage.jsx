@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../theme';
 export default function AlbumPage(){
 const [albums,setAlbum] = useState([{title: 'Данные загружаются...'}])
 
@@ -9,6 +10,7 @@ const FetchAlbum = async () => {
     const result =  await response.json()
     setAlbum(result)
 }
+const {theme}  = useContext (ThemeContext)
 useEffect(()=> {
     FetchAlbum()
 }, [])
@@ -17,7 +19,7 @@ useEffect(()=> {
 return (
     <div>
     {albums.map((album) =>(
-        <div key={album.id}>
+        <div className={`c-${theme}`} key={album.id}>
         <Link to={`/album/${album.albumId}`}>
         <p>{`Номер Альбома:${album.albumId}`}</p> <br/>
         </Link>

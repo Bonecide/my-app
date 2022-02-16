@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
+import { ThemeContext } from './../theme';
 
 export default function AlbumDetailsPage (){
     const [photos,setPhoto] = useState([{title: 'Данные загружаются...'}])
@@ -13,6 +14,7 @@ export default function AlbumDetailsPage (){
         const result = await response.json()
         setPhoto(result)
     }
+    const {theme} = useContext(ThemeContext)
 
   useEffect  (()=> {
       fetchPhoto()
@@ -21,12 +23,12 @@ export default function AlbumDetailsPage (){
   return (
       <div>
       {photos.map((photo) =>(
-      <div key={photo.id}>
+      <div className={`c-${theme}`} key={photo.id}>
         <Grid container>
             <Grid item direction='columns'>
                 <Grid container alignItems="center">
                 <h3>{photo.title}</h3> <br/>
-                <img style={{width: '100px',height:'100px'}} src={photo.url} alt={photo.id} /> 
+                <img style={{width: '100px',height:'100px',marginLeft: '20px'}} src={photo.url} alt={photo.id} /> 
                 </Grid>
             </Grid>
         </Grid>
