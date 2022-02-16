@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 export default function AlbumPage(){
-const [albums,setAlbum] = useState([])
+const [albums,setAlbum] = useState([{title: 'Данные загружаются...'}])
 
 
 const FetchAlbum = async () => {
@@ -17,10 +17,13 @@ useEffect(()=> {
 return (
     <div>
     {albums.map((album) =>(
-        <Link key={album.id} to={`/album/${album.albumId}`}>
+        <div key={album.id}>
+        <Link to={`/album/${album.albumId}`}>
         <p>{`Номер Альбома:${album.albumId}`}</p> <br/>
-        <h3>{`Название:${album.title}`}</h3> 
-        </Link> ))}
+        </Link>
+        <h3>{album.title}</h3> 
+        </div>
+         ))}
     </div>
 )
 }

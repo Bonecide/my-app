@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
 
 export default function AlbumDetailsPage (){
-    const [photos,setPhoto] = useState([])
+    const [photos,setPhoto] = useState([{title: 'Данные загружаются...'}])
     const { albumId } = useParams()
 
     const fetchPhoto = async () => {
